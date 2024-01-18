@@ -29,3 +29,12 @@ PIX is a great way to transfer money in Brazil, it comes with a great architectu
 > The **intermediator** must control an account possessed by the **emitter** in order to automatically schedule
 > and send PIX transactions to the **receivers**, otherwise a manual action will be needed, defeating the purpose of
 > providing offline transactions.
+
+## Usability
+
+The QRCode consists of a payload created by the **emitter** through the **intermediator**'s application/webserver that will be encrypted with a passowrd and will have necessarily a expiration time that can not be higher than **12 hours** from the creation time. The payload will be both stored on the database and encrypted + turned into a shareable QRCode and will have of the following data:
+
+- createdAt: ISO String representing the creation date of the payload
+- expiresAt: ISO String representing the customized expiration date of the payload
+- emitterId: ID referent to the emitter, can be String or Integer
+- valueAmount: Maximum quantity borrowed from the emitter account to be spent using the QRCode
