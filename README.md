@@ -38,7 +38,8 @@ The QRCode consists of a payload created by the **emitter** through the **interm
 - createdAt: ISO String representing the creation date of the payload
 - expiresAt: ISO String representing the customized expiration date of the payload
 - emitterId: ID referent to the emitter, can be String or Integer
-- valueAmount: Maximum quantity in cents borrowed from the emitter account to be spent using the QRCode
+- initialValueAmount: Maximum quantity in cents borrowed from the emitter account to be spent using the QRCode
+- currentValueAmount: Current quantity available in the QRCode to spend (Not included in the QRCode payload, only database)
 
 The final payload (json, encrypted and QRCode) may look like that:
 
@@ -50,11 +51,16 @@ The final payload (json, encrypted and QRCode) may look like that:
   "createdAt": "2011-10-05T14:48:00.000Z",
   "expirestAt": "2011-10-05T14:48:00.000Z",
   "emitterId": "c0c199f2-0964-4ff4-a3af-6dd2c9425c27",
-  "valueAmount": 10000
+  "initialValueAmount": 10000
 }
 ```
 ```
 wvpqBILAKI+Nq7BUgGE1meZaDL7E2easj7K1cGb3V/luMp5eKVPvMlz2qrWP0c9UZcXplE66Q9+il1YYrud0VhLLNKIGWMPeyR10pjS2hFVcd2/C0vxmKqKKZU4HK/qouT95feCzp7BlZj4DMdZQCma7fAhXR/YYp//g6WAx00rN/4Hh2ojegL692m6shPQ9ORKef64imUZQfp5hn5JRjW0hZkfJ5EA0b9PQ/5QmcKU=
 ```
 
-The **receivers** can read the QRCode using the **intermediator**'s application/webserver and it will prompt the amount and password to be put - just like credit cards - in order to decrypt and access the payload data. Then, the **intermediator** will compare each field of the decrypted data to the equivalent store in the database. The operation may be a success and the final PIX transaction with the desired amount may be scheduled to be executed if all the fields are the exact same as the provided decrypted data.
+The **receivers** can read the QRCode using the **intermediator**'s application/webserver and it will prompt the amount and password to be put - just like credit cards - in order to decrypt and access the payload data. Then, the **intermediator** will compare each field of the decrypted data to the equivalent store in the database. The operation may be a success and the final PIX transaction with the desired amount may be scheduled to be executed if all the fields are the exact same as the provided decrypted data. 
+
+### Failure points
+
+- Amount exceeds the QRCode limit: happens when the `currentValueAmount` is less than the value that the **receiver** tried to receive in the transaction
+- Invalid QRCode: happens when the QRCode was expired or manually invalidated by the **emitter** through the **intermediator** application/webservice
