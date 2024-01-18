@@ -32,12 +32,13 @@ PIX is a great way to transfer money in Brazil, it comes with a great architectu
 
 ## Usability
 
-The QRCode consists of a payload created by the **emitter** through the **intermediator**'s application/webserver that will be encrypted with a passowrd and will have necessarily a expiration time that can not be higher than **12 hours** from the creation time. The payload will be both stored on the database and encrypted + turned into a shareable QRCode and will have of the following data:
+The QRCode consists of a payload created by the **emitter** through the **intermediator**'s application/webserver that will be encrypted with a passowrd and will have necessarily a expiration time that can not be higher than **12 hours** from the creation time. The payload will be both stored on the database and providing an encrypted + turned into a shareable QRCode copy to the user, having the following data:
 
+- uuid: The offline pix QRCode id, necessary to finding the transaction in the DB
 - createdAt: ISO String representing the creation date of the payload
 - expiresAt: ISO String representing the customized expiration date of the payload
 - emitterId: ID referent to the emitter, can be String or Integer
-- valueAmount: Maximum quantity borrowed from the emitter account to be spent using the QRCode
+- valueAmount: Maximum quantity in cents borrowed from the emitter account to be spent using the QRCode
 
 The final payload (json, encrypted and QRCode) may look like that:
 
@@ -45,6 +46,7 @@ The final payload (json, encrypted and QRCode) may look like that:
 
 ```js
 {
+  "uuid": "3e3602c1-62a1-4375-ad02-093d7bdf822f",
   "createdAt": "2011-10-05T14:48:00.000Z",
   "expirestAt": "2011-10-05T14:48:00.000Z",
   "emitterId": "c0c199f2-0964-4ff4-a3af-6dd2c9425c27",
@@ -55,3 +57,4 @@ The final payload (json, encrypted and QRCode) may look like that:
 wvpqBILAKI+Nq7BUgGE1meZaDL7E2easj7K1cGb3V/luMp5eKVPvMlz2qrWP0c9UZcXplE66Q9+il1YYrud0VhLLNKIGWMPeyR10pjS2hFVcd2/C0vxmKqKKZU4HK/qouT95feCzp7BlZj4DMdZQCma7fAhXR/YYp//g6WAx00rN/4Hh2ojegL692m6shPQ9ORKef64imUZQfp5hn5JRjW0hZkfJ5EA0b9PQ/5QmcKU=
 ```
 
+The **receivers** can read the QRCode using the **intermediator**'s application/webserver and it will prompt the amount and password to be put - just like credit cards - in order to decrypt and access the payload data. Then, the **intermediator** will compare each field of the decrypted data to the equivalent store in the database. The operation may be a success and the final PIX transaction with the desired amount may be scheduled to be executed if all the fields are the exact same as the provided decrypted data.
