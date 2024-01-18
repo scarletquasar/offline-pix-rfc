@@ -41,6 +41,8 @@ The QRCode consists of a payload created by the **emitter** through the **interm
 
 The final payload (json, encrypted and QRCode) may look like that:
 
+<img align="left" width="245" src="./example-qr-code.png">
+
 ```js
 {
   "createdAt": "2011-10-05T14:48:00.000Z",
@@ -52,6 +54,4 @@ The final payload (json, encrypted and QRCode) may look like that:
 ```
 wvpqBILAKI+Nq7BUgGE1meZaDL7E2easj7K1cGb3V/luMp5eKVPvMlz2qrWP0c9UZcXplE66Q9+il1YYrud0VhLLNKIGWMPeyR10pjS2hFVcd2/C0vxmKqKKZU4HK/qouT95feCzp7BlZj4DMdZQCma7fAhXR/YYp//g6WAx00rN/4Hh2ojegL692m6shPQ9ORKef64imUZQfp5hn5JRjW0hZkfJ5EA0b9PQ/5QmcKU=
 ```
-
-<img src="./example-qr-code.png">
 
