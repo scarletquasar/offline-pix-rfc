@@ -62,5 +62,6 @@ The **receivers** can read the QRCode using the **intermediator**'s application/
 
 ### Failure points
 
-- Amount exceeds the QRCode limit: happens when the `currentValueAmount` is less than the value that the **receiver** tried to receive in the transaction
-- Invalid QRCode: happens when the QRCode was expired or manually invalidated by the **emitter** through the **intermediator** application/webservice
+| Name | Description |
+| Amount exceeds the QRCode limit | happens when the `currentValueAmount` is less than the value that the **receiver** tried to receive in the transaction |
+| Invalid QRCode | happens when the QRCode was expired or manually invalidated by the **emitter** through the **intermediator** application/webservice |
