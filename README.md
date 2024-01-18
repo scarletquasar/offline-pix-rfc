@@ -38,3 +38,20 @@ The QRCode consists of a payload created by the **emitter** through the **interm
 - expiresAt: ISO String representing the customized expiration date of the payload
 - emitterId: ID referent to the emitter, can be String or Integer
 - valueAmount: Maximum quantity borrowed from the emitter account to be spent using the QRCode
+
+The final payload (json, encrypted and QRCode) may look like that:
+
+```js
+{
+  "createdAt": "2011-10-05T14:48:00.000Z",
+  "expirestAt": "2011-10-05T14:48:00.000Z",
+  "emitterId": "c0c199f2-0964-4ff4-a3af-6dd2c9425c27",
+  "valueAmount": 10000
+}
+```
+```
+wvpqBILAKI+Nq7BUgGE1meZaDL7E2easj7K1cGb3V/luMp5eKVPvMlz2qrWP0c9UZcXplE66Q9+il1YYrud0VhLLNKIGWMPeyR10pjS2hFVcd2/C0vxmKqKKZU4HK/qouT95feCzp7BlZj4DMdZQCma7fAhXR/YYp//g6WAx00rN/4Hh2ojegL692m6shPQ9ORKef64imUZQfp5hn5JRjW0hZkfJ5EA0b9PQ/5QmcKU=
+```
+
+<img src="./qr-code-example.png>
+
