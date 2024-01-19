@@ -4,10 +4,10 @@ RFC describing the "Offline Pix" feature architecture, focused on providing easy
 ## Summary
 
 - [Problem description](#Problem-description)
-- Personas
-- Usability
-- Security
-- Profitability
+- [Personas](#Personas)
+- [Usability](#Usability)
+- [Security](#Security)
+- [Profitability](#Profitability)
 
 ## Problem description
 
