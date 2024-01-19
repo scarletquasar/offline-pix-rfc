@@ -66,3 +66,8 @@ The **receivers** can read the QRCode using the **intermediator**'s application/
 | - | - |
 | Amount exceeds the QRCode limit | happens when the `currentValueAmount` is less than the value that the **receiver** tried to receive in the transaction |
 | Invalid QRCode | happens when the QRCode was expired or manually invalidated by the **emitter** through the **intermediator** application/webservice |
+| Security Exception | something wrong was found during the transaction and it was forcibly cancelled to avoid bigger problems, in that case the QRCode may be invalidated automatically |
+
+## Security
+
+There are some security cares that may be taken during the implementation of the QRCode and the system itself, starting by location-based checks before every transaction. Security exceptions may be raised when: a first transaction was made at least 500 kilometers from another between a very short period - usually 1 hour or a first transaction is trying to be executed from a place too far from where the QRCode was created (usually 500 kilometers) in a very short period, also usually 1 hour. The **intermediator** should also be prepared to take care about brute force attacks, so it may be prepared to identify different kinds of payloads trying to execute in a very short periods of time with a field in common. Besides that, the **intermediator** should also be able to invalidate any created QRCode from outside the main application/webservice for any reason and also block future QRCode creations if it is explicitly desired by the client.
