@@ -71,3 +71,12 @@ The **receivers** can read the QRCode using the **intermediator**'s application/
 ## Security
 
 There are some security cares that may be taken during the implementation of the QRCode and the system itself, starting by location-based checks before every transaction. Security exceptions may be raised when: a first transaction was made at least 500 kilometers from another between a very short period - usually 1 hour or a first transaction is trying to be executed from a place too far from where the QRCode was created (usually 500 kilometers) in a very short period, also usually 1 hour. The **intermediator** should also be prepared to take care about brute force attacks, so it may be prepared to identify different kinds of payloads trying to execute in a very short periods of time with a field in common. Besides that, the **intermediator** should also be able to invalidate any created QRCode from outside the main application/webservice for any reason and also block future QRCode creations if it is explicitly desired by the client.
+
+## Profitability
+
+There are some points from where the **intermediator** can profit providing the offline pix feature:
+
+- *transfer fees* - fees that are applied to every transference during the utilization of the QRCode, it's a small fee, usually between 0.3% to 0.5% of the amound applied as additional value;
+- *creational fees* - a fee that is applied during the QRCode creation, it can be a small percentage (1% to 1.5%) of the total amound value grabbed in the QRCode
+- *market partnership* - being partner with selling companies to offer distinguished treatment and easily implement the offline pix, charging a small amount per month
+- *charging the sellers* - making the feature paid for the stores and the sellers that want to accept offline pix payments and keeping it free for the users
