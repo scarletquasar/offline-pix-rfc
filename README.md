@@ -3,7 +3,7 @@ RFC describing the "Offline Pix" feature architecture, focused on providing easy
 
 ## Summary
 
-- Problem description
+- [Problem description](#Problemdescription)
 - Personas
 - Usability
 - Security
