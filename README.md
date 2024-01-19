@@ -32,6 +32,8 @@ PIX is a great way to transfer money in Brazil, it comes with a great architectu
 
 ## Usability
 
+<img src="./process-diagram.png">
+
 The QRCode consists of a payload created by the **emitter** through the **intermediator**'s application/webserver that will be encrypted with a passowrd and will have necessarily a expiration time that can not be higher than **12 hours** from the creation time. The payload will be both stored on the database and providing an encrypted + turned into a shareable QRCode copy to the user, having the following data:
 
 - uuid: The offline pix QRCode id, necessary to finding the transaction in the DB
